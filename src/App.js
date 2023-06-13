@@ -1,11 +1,16 @@
+import { Fragment } from "react";
+import NavbarTop from "./components/navbar";
 
-import './App.css';
+import HeadingBar from "./components/heading";
+
 
 const App=() =>{
   return (
-    <div>
- 
-    </div>
+    <Fragment>
+      <NavbarTop/>
+      <hr/>
+      <HeadingBar/>
+    </Fragment>
   );
 }
 
