@@ -7,7 +7,7 @@ const Album=(props) =>{
             <Container className="mt-4">
                 <Row>
                     <Col className="mt-4" xs={4}>
-                        <Card>
+                        <Card className="shadow-lg">
                             <Card.Header className="text-center" style={{fontWeight:"bold",fontFamily:"times-new-roman",fontSize:"26px"}}>{props.albumDetails1.title}</Card.Header>
                             <Card.Body style={{marginLeft:"38px"}}><img src={props.albumDetails1.imageUrl}/></Card.Body>
                             <Card.Footer className="text-center">
@@ -17,7 +17,7 @@ const Album=(props) =>{
                         </Card>
                     </Col>
                     <Col className="mt-4" xs={4} style={{marginLeft:"26rem"}}>
-                        <Card>
+                        <Card className="shadow-lg">
                             <Card.Header className="text-center" style={{fontWeight:"bold",fontFamily:"times-new-roman",fontSize:"26px"}}>{props.albumDetails2.title}</Card.Header>
                             <Card.Body style={{marginLeft:"38px"}}><img src={props.albumDetails2.imageUrl}/></Card.Body>
                             <Card.Footer className="text-center">
