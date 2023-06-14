@@ -2,6 +2,7 @@ import { Fragment } from "react";
 import NavbarTop from "./components/navbar";
 import HeadingBar from "./components/heading";
 import Album from "./components/albumTile";
+import { Button } from "react-bootstrap";
 
 const App = () => {
   const albumDetails=[
@@ -29,11 +30,14 @@ const App = () => {
 
   return (
     <Fragment>
-      <NavbarTop />
-      <hr />
-      <HeadingBar />
+      <NavbarTop/>
+      <hr className="p-3"/>
+      <HeadingBar/>
       <Album albumDetails1={albumDetails[0]} albumDetails2={albumDetails[1]}/>
       <Album albumDetails1={albumDetails[2]} albumDetails2={albumDetails[3]}/>
+      <Button className="mt-4" style={{marginLeft:"780px",width:"150px",height:"60px",fontWeight:"bold",backgroundColor:"orange"}}>  
+        VIEW CART
+      </Button>
     </Fragment>
   );
 };
