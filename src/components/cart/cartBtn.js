@@ -4,7 +4,7 @@ import { Button} from "react-bootstrap";
 const CartBtn=() =>{
     return(
         <Fragment>
-             <Button size="md">CART</Button>
+             <Button size="md" style={{fontWeight:"bold"}}>CART</Button>
         </Fragment>
     )
 }

@@ -9,7 +9,7 @@ const NavbarTop=() =>{
         <Fragment>
             <Navbar bg="black" expand="sm" variant="dark" style={{height:"55px"}}>
                 <Container>
-                    <Navbar.Brand style={{fontFamily:"times-new-roman",marginLeft:"560px"}}>
+                    <Navbar.Brand style={{fontFamily:"times-new-roman",marginLeft:"540px"}}>
                         <h4>HOME STORE ABOUT</h4>
                     </Navbar.Brand>
                     <CartBtn/>
