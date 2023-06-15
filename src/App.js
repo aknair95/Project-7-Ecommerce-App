@@ -1,8 +1,9 @@
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import NavbarTop from "./components/navbar";
 import HeadingBar from "./components/heading";
 import Album from "./components/albumTile";
 import { Button } from "react-bootstrap";
+import Cart from "./components/cart/cart";
 
 const App = () => {
   const albumDetails=[
@@ -28,14 +29,25 @@ const App = () => {
     },
   ]
 
+  const [cartShow,setCartShow]=useState(false);
+
+  const showCart=() =>{
+    setCartShow(true);
+  }
+
+  const hideCart=() =>{
+    setCartShow(false);
+  }
+
   return (
     <Fragment>
-      <NavbarTop/>
+      <Cart cartShow={cartShow} cartHide={hideCart}/>
+      <NavbarTop setCartShow={showCart}/>
       <hr className="p-3"/>
       <HeadingBar/>
       <Album albumDetails1={albumDetails[0]} albumDetails2={albumDetails[1]}/>
       <Album albumDetails1={albumDetails[2]} albumDetails2={albumDetails[3]}/>
-      <Button className="mt-4" style={{marginLeft:"780px",width:"150px",height:"60px",fontWeight:"bold",backgroundColor:"orange"}}>  
+      <Button onClick={showCart} className="mt-4" style={{marginLeft:"780px",width:"150px",height:"60px",fontWeight:"bold",backgroundColor:"orange"}}>  
         VIEW CART
       </Button>
     </Fragment>

@@ -4,7 +4,7 @@ import CartCounter from "./cart/cartCounter";
 import CartBtn from "./cart/cartBtn";
 
 
-const NavbarTop=() =>{
+const NavbarTop=(props) =>{
     return(
         <Fragment>
             <Navbar fixed="top" bg="black" expand="sm" variant="dark" style={{height:"55px"}}>
@@ -12,7 +12,7 @@ const NavbarTop=() =>{
                     <Navbar.Brand style={{fontFamily:"times-new-roman",marginLeft:"540px"}}>
                         <h4>HOME STORE ABOUT</h4>
                     </Navbar.Brand>
-                    <CartBtn/>
+                    <CartBtn setCartShow={props.setCartShow}/>
                     <CartCounter/>
                 </Container>
             </Navbar>

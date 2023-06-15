@@ -1,10 +1,10 @@
 import { Fragment } from "react";
 import { Button} from "react-bootstrap";
 
-const CartBtn=() =>{
+const CartBtn=(props) =>{
     return(
         <Fragment>
-             <Button size="md" style={{fontWeight:"bold",marginLeft:"550px"}}>CART</Button>
+             <Button onClick={props.setCartShow} size="md" style={{fontWeight:"bold",marginLeft:"550px"}}>CART</Button>
         </Fragment>
     )
 }
