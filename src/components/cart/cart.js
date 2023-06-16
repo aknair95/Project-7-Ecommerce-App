@@ -14,6 +14,10 @@ const Cart = (props) => {
         return element.qty>0;
     })
 
+    const totalCartAmount=filteredCartItems.reduce((totalAmt,element) =>{
+        return totalAmt+element.price*element.qty;
+    },0);
+
   return (
     <Fragment>
       <Modal show={props.cartShow} onHide={props.cartHide} size="lg">
@@ -35,9 +39,13 @@ const Cart = (props) => {
                             <br/>
                             <hr/>
                             </>)
-                    })
+                        })
             }</ul>
         </Modal.Body>
+        <Modal.Footer style={{justifyContent:"center"}}>
+            <h4 style={{fontFamily:"times-new-roman",fontWeight:"bold"}}>TOTAL AMOUNT- Rs {totalCartAmount}</h4>
+            <Button size="lg" style={{fontWeight:"bold"}}>ORDER</Button>
+        </Modal.Footer>
       </Modal>
     </Fragment>
   );
