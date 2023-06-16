@@ -17,7 +17,7 @@ const Album=(props) =>{
                     <Col className="mt-4" xs={4}>
                         <Card className="shadow-lg">
                             <Card.Header className="text-center" style={{fontWeight:"bold",fontFamily:"times-new-roman",fontSize:"26px"}}>{props.albumDetails1.title}</Card.Header>
-                            <Card.Body style={{marginLeft:"38px"}}><img src={props.albumDetails1.imageUrl}/></Card.Body>
+                            <Card.Body style={{marginLeft:"38px"}}><img style={{borderRadius:"10px"}} src={props.albumDetails1.imageUrl}/></Card.Body>
                             <Card.Footer className="text-center">
                                 <h5 style={{fontWeight:"bold"}}>{`Rs ${props.albumDetails1.price}`}</h5>
                             </Card.Footer>
@@ -27,7 +27,7 @@ const Album=(props) =>{
                     <Col className="mt-4" xs={4} style={{marginLeft:"26rem"}}>
                         <Card className="shadow-lg">
                             <Card.Header className="text-center" style={{fontWeight:"bold",fontFamily:"times-new-roman",fontSize:"26px"}}>{props.albumDetails2.title}</Card.Header>
-                            <Card.Body style={{marginLeft:"38px"}}><img src={props.albumDetails2.imageUrl}/></Card.Body>
+                            <Card.Body style={{marginLeft:"38px"}}><img style={{borderRadius:"10px"}} src={props.albumDetails2.imageUrl}/></Card.Body>
                             <Card.Footer className="text-center">
                                 <h5 style={{fontWeight:"bold"}}>{`Rs ${props.albumDetails2.price}`}</h5>
                             </Card.Footer>
