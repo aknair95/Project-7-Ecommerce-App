@@ -5,6 +5,7 @@ import Album from "./components/albumTile";
 import { Button } from "react-bootstrap";
 import Cart from "./components/cart/cart";
 import CartContextProvider from "./store/cartContextProvider";
+import Footer from "./components/footer";
 
 const App = () => {
   const albumDetails=[
@@ -54,7 +55,8 @@ const App = () => {
       <Album albumDetails1={albumDetails[2]} albumDetails2={albumDetails[3]}/>
       <Button onClick={showCart} className="mt-4" style={{marginLeft:"780px",width:"150px",height:"60px",fontWeight:"bold",backgroundColor:"orange"}}>  
         VIEW CART
-      </Button>
+      </Button><br/><br/>
+      <Footer/>
     </CartContextProvider>
   );
 };
