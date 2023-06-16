@@ -1,27 +1,18 @@
 import { Button, Modal } from "react-bootstrap";
-import { Fragment } from "react";
+import { Fragment, useContext } from "react";
+import CartContext from "../../store/cartContext";
 
 const Cart = (props) => {
-  const cartItems = [
-    {
-      title: "Colors",
-      price: 100,
-      imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
-      quantity: 2,
-    },
-    {
-      title: "Black and white Colors",
-      price: 50,
-      imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%202.png",
-      quantity: 3,
-    },
-    {
-      title: "Yellow and Black Colors",
-      price: 70,
-      imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%203.png",
-      quantity: 1,
-    },
-  ]
+    const cartCtx=useContext(CartContext);
+
+    const removeBtnHandler=(e) =>{
+        const item={title: e.target.value};
+        cartCtx.removeItem(item);
+    }
+
+    const filteredCartItems=cartCtx.cartItems.filter((element) =>{
+        return element.qty>0;
+    })
 
   return (
     <Fragment>
@@ -32,14 +23,14 @@ const Cart = (props) => {
         </Modal.Header>
         <Modal.Body>
             <ul>{
-                cartItems.map((element) =>{
+                filteredCartItems.map((element) =>{
                     return (<>
                             <li key={element.title}>
                             <img style={{width:"80px",height:"80px",borderRadius:"10px"}} src={element.imageUrl}/>    
                             <h5>TITLE- {element.title}</h5>
                             <h5>PRICE- Rs {element.price}</h5>
-                            <h5>QTY- {element.quantity}</h5>
-                            <Button id={element.title} className="btn-danger" style={{float:"right"}}>REMOVE</Button>
+                            <h5>QTY- {element.qty}</h5>
+                            <Button onClick={removeBtnHandler} value={element.title} className="btn-danger" style={{float:"right"}}>REMOVE</Button>
                             </li>
                             <br/>
                             <hr/>

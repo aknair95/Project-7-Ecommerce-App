@@ -1,7 +1,15 @@
-import { Fragment } from "react";
+import { Fragment,useContext} from "react";
 import { Button, Card, Col, Container, Row } from "react-bootstrap";
+import CartContext from "../store/cartContext";
 
 const Album=(props) =>{
+    const cartCtx=useContext(CartContext);
+
+    const onClickAddtoCart=(e) =>{
+        const item={title: e.target.value};
+        cartCtx.addItem(item,1);
+    }
+
     return(
         <Fragment>
             <Container className="mt-4">
@@ -13,7 +21,7 @@ const Album=(props) =>{
                             <Card.Footer className="text-center">
                                 <h5 style={{fontWeight:"bold"}}>{`Rs ${props.albumDetails1.price}`}</h5>
                             </Card.Footer>
-                            <Button style={{fontWeight:"bold",float:"right"}}>ADD TO CART</Button>
+                            <Button value={props.albumDetails1.title} onClick={onClickAddtoCart} style={{fontWeight:"bold",float:"right"}}>ADD TO CART</Button>
                         </Card>
                     </Col>
                     <Col className="mt-4" xs={4} style={{marginLeft:"26rem"}}>
@@ -23,7 +31,7 @@ const Album=(props) =>{
                             <Card.Footer className="text-center">
                                 <h5 style={{fontWeight:"bold"}}>{`Rs ${props.albumDetails2.price}`}</h5>
                             </Card.Footer>
-                            <Button style={{fontWeight:"bold",float:"right" }}>ADD TO CART</Button>
+                            <Button value={props.albumDetails2.title} onClick={onClickAddtoCart} style={{fontWeight:"bold",float:"right" }}>ADD TO CART</Button>
                         </Card>
                     </Col>
                 </Row>
