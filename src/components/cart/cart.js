@@ -18,6 +18,10 @@ const Cart = (props) => {
         return totalAmt+element.price*element.qty;
     },0);
 
+    const orderBtnHandler=(e) =>{
+      alert("!!! ORDER PLACED !!!")
+    }
+
   return (
     <Fragment>
       <Modal show={props.cartShow} onHide={props.cartHide} size="lg">
@@ -30,11 +34,11 @@ const Cart = (props) => {
                 filteredCartItems.map((element) =>{
                     return (<>
                             <li key={element.title}>
-                            <img style={{width:"80px",height:"80px",borderRadius:"10px"}} src={element.imageUrl}/>    
-                            <h5>TITLE- {element.title}</h5>
-                            <h5>PRICE- Rs {element.price}</h5>
-                            <h5>QTY- {element.qty}</h5>
-                            <Button onClick={removeBtnHandler} value={element.title} className="btn-danger" style={{float:"right"}}>REMOVE</Button>
+                              <img style={{width:"80px",height:"80px",borderRadius:"10px"}} src={element.imageUrl}/>    
+                              <h5>TITLE- {element.title}</h5>
+                              <h5>PRICE- Rs {element.price}</h5>
+                              <h5>QTY- {element.qty}</h5>
+                              <Button onClick={removeBtnHandler} value={element.title} className="btn-danger" style={{float:"right"}}>REMOVE</Button>
                             </li>
                             <br/>
                             <hr/>
@@ -44,7 +48,7 @@ const Cart = (props) => {
         </Modal.Body>
         <Modal.Footer style={{justifyContent:"center"}}>
             <h4 style={{fontFamily:"times-new-roman",fontWeight:"bold"}}>TOTAL AMOUNT- Rs {totalCartAmount}</h4>
-            <Button size="lg" style={{fontWeight:"bold"}}>ORDER</Button>
+            {totalCartAmount>0 && <Button size="lg" style={{fontWeight:"bold"}} onClick={orderBtnHandler}>ORDER</Button>}
         </Modal.Footer>
       </Modal>
     </Fragment>
