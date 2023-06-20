@@ -7,7 +7,7 @@ const Footer=() =>{
             <Navbar expand="sm" variant="dark" style={{height:"150px",backgroundColor:"lightpink"}}>
                 <Container>
                     <Navbar.Brand style={{fontSize:"70px",marginLeft:"60px",marginBottom:"10px",fontFamily:"times-new-roman"}}>
-                    The Generics
+                        The Generics
                     </Navbar.Brand>
                 </Container>
             </Navbar>
