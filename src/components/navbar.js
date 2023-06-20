@@ -1,23 +1,33 @@
 import { Fragment } from "react";
-import { Container, Navbar } from "react-bootstrap";
+import { Navbar,Nav } from "react-bootstrap";
 import CartCounter from "./cart/cartCounter";
 import CartBtn from "./cart/cartBtn";
 
-
-const NavbarTop=(props) =>{
+const NavigationBar=(props) =>{
     return(
         <Fragment>
-            <Navbar fixed="top" bg="black" expand="sm" variant="dark" style={{height:"55px"}}>
-                <Container>
-                    <Navbar.Brand style={{fontFamily:"times-new-roman",marginLeft:"540px"}}>
-                        <h4>HOME STORE ABOUT</h4>
-                    </Navbar.Brand>
-                    <CartBtn setCartShow={props.setCartShow}/>
-                    <CartCounter/>
-                </Container>
+            <Navbar bg="dark" expand="sm" variant="light" fixed="top">
+                <Nav variant="tabs" style={{marginLeft:"750px"}}>
+                    <Nav.Item>
+                        <Nav.Link href="/" style={{fontFamily:"times-new-roman",fontWeight:"bold",fontSize:"20px",color:"blue"}} 
+                        active={props.homePage}>HOME</Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                        <Nav.Link href="/store" style={{fontFamily:"times-new-roman",fontWeight:"bold",fontSize:"20px",color:"blue"}} 
+                        active={props.storePage}>STORE</Nav.Link>
+                    </Nav.Item>
+                    <Nav.Item>
+                        <Nav.Link href="/about" style={{fontFamily:"times-new-roman",fontWeight:"bold",fontSize:"20px",color:"blue"}} 
+                        active={props.aboutPage}>ABOUT</Nav.Link>
+                    </Nav.Item>
+                </Nav>
+                <Nav style={{marginLeft:"560px"}}>
+                    {props.storePage && <CartBtn setCartShow={props.setCartShow}/>}
+                    {props.storePage && <CartCounter/>}    
+                </Nav>       
             </Navbar>
         </Fragment>
     )
 }
 
-export default NavbarTop;
+export default NavigationBar;
