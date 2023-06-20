@@ -1,11 +1,11 @@
+
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import Home from "./pages/home";
+import Store from "./pages/store";
+import About from "./pages/about";
 import { useState } from "react";
-import NavbarTop from "./components/navbar";
-import HeadingBar from "./components/heading";
-import Album from "./components/albumTile";
-import { Button } from "react-bootstrap";
-import Cart from "./components/cart/cart";
-import CartContextProvider from "./store/cartContextProvider";
-import Footer from "./components/footer";
+import RootPage from "./pages/root";
+
 
 const App = () => {
   const albumDetails=[
@@ -45,19 +45,24 @@ const App = () => {
     setCartShow(false);
   }
 
+  const [homePage,setHomePage]=useState(false);
+  const [storePage,setStorePage]=useState(false);
+  const [aboutPage,setAboutPage]=useState(false);
+
+  const router=createBrowserRouter([
+    { path: "/",
+      element: <RootPage showCart={showCart} hideCart={hideCart} storePage={storePage} homePage={homePage} aboutPage={aboutPage}/>,
+      children: [
+       { path: "/", element: <Home setHomePage={setHomePage}/> },
+       { path: "/store", element: <Store cartShow={cartShow} hideCart={hideCart} showCart={showCart} 
+          albumDetails={albumDetails} setStorePage={setStorePage}/> },
+       { path: "/about", element: <About aboutPage={aboutPage} setAboutPage={setAboutPage}/> }
+     ]},
+    
+  ]);
+
   return (
-    <CartContextProvider albumDetails={albumDetails}>
-      <Cart cartShow={cartShow} cartHide={hideCart}/>
-      <NavbarTop setCartShow={showCart}/>
-      <hr className="p-3"/>
-      <HeadingBar/>
-      <Album albumDetails1={albumDetails[0]} albumDetails2={albumDetails[1]}/>
-      <Album albumDetails1={albumDetails[2]} albumDetails2={albumDetails[3]}/>
-      <Button onClick={showCart} className="mt-4" style={{marginLeft:"780px",width:"150px",height:"60px",fontWeight:"bold",backgroundColor:"orange"}}>  
-        VIEW CART
-      </Button><br/><br/>
-      <Footer/>
-    </CartContextProvider>
+    <RouterProvider router={router}/>
   );
 };
 
