@@ -51,11 +51,12 @@ const App = () => {
 
   const router=createBrowserRouter([
     { path: "/",
-      element: <RootPage showCart={showCart} hideCart={hideCart} storePage={storePage} homePage={homePage} aboutPage={aboutPage}/>,
+      element: <RootPage showCart={showCart} hideCart={hideCart} storePage={storePage} homePage={homePage} 
+              aboutPage={aboutPage} albumDetails={albumDetails}/>,
       children: [
        { path: "/", element: <Home setHomePage={setHomePage}/> },
        { path: "/store", element: <Store cartShow={cartShow} hideCart={hideCart} showCart={showCart} 
-          albumDetails={albumDetails} setStorePage={setStorePage}/> },
+              albumDetails={albumDetails} setStorePage={setStorePage}/> },
        { path: "/about", element: <About aboutPage={aboutPage} setAboutPage={setAboutPage}/> }
      ]},
     

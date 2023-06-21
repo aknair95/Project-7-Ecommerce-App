@@ -1,11 +1,12 @@
-import { Fragment } from "react";
+
 import { Navbar,Nav } from "react-bootstrap";
 import CartCounter from "./cart/cartCounter";
 import CartBtn from "./cart/cartBtn";
+import CartContextProvider from "../store/cartContextProvider";
 
 const NavigationBar=(props) =>{
     return(
-        <Fragment>
+        <CartContextProvider albumDetails={props.albumDetails}>
             <Navbar bg="dark" expand="sm" variant="light" fixed="top">
                 <Nav variant="tabs" style={{marginLeft:"750px"}}>
                     <Nav.Item>
@@ -26,7 +27,7 @@ const NavigationBar=(props) =>{
                     {props.storePage && <CartCounter/>}    
                 </Nav>       
             </Navbar>
-        </Fragment>
+        </CartContextProvider>
     )
 }
 

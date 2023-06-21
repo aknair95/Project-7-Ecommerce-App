@@ -6,7 +6,7 @@ const RootPage=(props) =>{
     return(
         <>
             <NavigationBar setCartShow={props.showCart} setCartHide={props.hideCart} storePage={props.storePage} 
-            homePage={props.homePage} aboutPage={props.aboutPage}/>
+            homePage={props.homePage} aboutPage={props.aboutPage} albumDetails={props.albumDetails}/>
             <Outlet/>
         </>
     )
