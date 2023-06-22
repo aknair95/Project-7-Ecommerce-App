@@ -1,5 +1,5 @@
 
-import { Button, Card, Col, Container, ListGroup, Navbar, Row} from "react-bootstrap";
+import { Button, Card, Col, Container, ListGroup, Navbar, Row, Stack} from "react-bootstrap";
 
 const Home=(props) =>{
     props.setHomePage(true);
@@ -40,10 +40,14 @@ const Home=(props) =>{
     return (
         <>
             <hr className="p-4"/>
-            <Navbar expand="sm" variant="dark" style={{height:"250px",backgroundColor:"#777777ff"}}>
-                <Container>
-                    <Navbar.Brand style={{fontSize:"140px",marginLeft:"280px",marginBottom:"80px",fontFamily:"times-new-roman"}}>
-                        The Generics<hr/>
+            <Navbar variant="dark" style={{height:"500px",backgroundColor:"#777777ff"}}>
+                <Container style={{justifyContent:"center"}}>
+                    <Navbar.Brand>
+                        <Stack gap={1}>
+                            <div style={{fontSize:"140px",fontFamily:"times-new-roman",marginBottom:"40px",marginLeft:"40px"}}>The Generics</div>
+                            <Button variant="outline-light" style={{height:"80px",width:"300px",fontSize:"26px",fontWeight:"bold",marginLeft:"290px",marginBottom:"30px"}}>Get Our Latest Album</Button>
+                            <Button variant="outline-light" style={{borderRadius:"40px",height:"80px",width:"80px",fontSize:"20px",fontWeight:"bold",marginLeft:"390px",marginBottom:"50px"}}>PLAY</Button>
+                        </Stack>
                     </Navbar.Brand>
                 </Container>
             </Navbar>
@@ -77,8 +81,8 @@ const Home=(props) =>{
                                             </Row>
                                         </Container>  
                                     </ListGroup.Item>
-                            </>)
-                        })
+                                    </>)
+                                })
                     }
                 </ListGroup>
             </Card>
