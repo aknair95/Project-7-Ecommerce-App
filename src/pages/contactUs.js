@@ -1,5 +1,5 @@
 
-import { Button, Card, Container,Form,Navbar } from "react-bootstrap";
+import { Button,Container,Form,Navbar } from "react-bootstrap";
 import classes from "./contactUS.module.css";
 import { useRef } from "react";
 
@@ -12,13 +12,15 @@ const ContactUs=(props) =>{
 
     const formSubmitHandler=(e) =>{
         e.preventDefault();
-        const userInfo={
-            name: nameRef.current.value,
-            email: emailRef.current.value,
-            mobNo: mobNoRef.current.value
-        }
-        props.addUserInfo(userInfo);
+        const enteredName=nameRef.current.value;
+        const enteredEmail=emailRef.current.value;
+        const enteredMobNo=mobNoRef.current.value;
+        props.addUserInfo(enteredName,enteredEmail,enteredMobNo); 
+        nameRef.current.value="";   
+        emailRef.current.value="";
+        mobNoRef.current.value="";
     }
+          
     return(
         <>
             <hr className="p-4"/>
@@ -32,20 +34,20 @@ const ContactUs=(props) =>{
             <br/><hr/><br/>
             <Container className={classes.formContainer}>
                 <h3 className="p-2">CONTACT DETAILS</h3>
-                <Form>
+                <Form onSubmit={formSubmitHandler}>
                     <Form.Group className="p-3">
-                        <Form.Control type="text" placeholder="Enter Name" size="lg" ref={nameRef}/>
+                        <Form.Control type="text" placeholder="Enter Name" size="lg" ref={nameRef} />
                         <Form.Text>*Mandatory Field</Form.Text>
                     </Form.Group>
                     <Form.Group className="p-3">                    
-                        <Form.Control type="email" placeholder="Enter Email ID" size="lg" ref={emailRef}/>
+                        <Form.Control type="email" placeholder="Enter Email ID" size="lg" ref={emailRef} />
                         <Form.Text>*Mandatory Field</Form.Text>
                     </Form.Group>
                     <Form.Group className="p-3">                      
-                        <Form.Control type="text" placeholder="Enter Contact Number" size="lg" ref={mobNoRef}/>
+                        <Form.Control type="text" placeholder="Enter Contact Number" size="lg" ref={mobNoRef} />
                         <Form.Text>*Mandatory Field</Form.Text>
                     </Form.Group>
-                    <Button type="submit" size="lg" onClick={formSubmitHandler} className="mb-3">SUBMIT</Button>
+                    <Button type="submit" size="lg" className="mb-3">SUBMIT</Button>
                 </Form>
             </Container> 
             <br/><br/>      
