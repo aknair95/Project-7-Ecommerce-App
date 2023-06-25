@@ -1,0 +1,27 @@
+
+.navbarHeading {
+    height: 250px;
+    background-color: #777777;
+}
+
+.headingPosition {
+   margin-Left:270px;
+   margin-Bottom: 80px;
+}
+
+.heading {
+    font-size: 140px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.formContainer {
+    background-color: lightblue;
+    border-radius: 7px;
+}
+
+.formContainer h3 {
+    font-weight: bold;
+    text-decoration: underline;
+    text-align: center;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
