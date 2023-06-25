@@ -5,6 +5,7 @@ import Store from "./pages/store";
 import About from "./pages/about";
 import { useState } from "react";
 import RootPage from "./pages/root";
+import ContactUs from "./pages/contactUs";
 
 
 const App = () => {
@@ -48,16 +49,18 @@ const App = () => {
   const [homePage,setHomePage]=useState(false);
   const [storePage,setStorePage]=useState(false);
   const [aboutPage,setAboutPage]=useState(false);
+  const [contactUsPage,setContactUsPage]=useState(false);
 
   const router=createBrowserRouter([
     { path: "/",
       element: <RootPage showCart={showCart} hideCart={hideCart} storePage={storePage} homePage={homePage} 
-              aboutPage={aboutPage} albumDetails={albumDetails}/>,
+              aboutPage={aboutPage} albumDetails={albumDetails} contactUsPage={contactUsPage}/>,
       children: [
        { path: "/", element: <Home setHomePage={setHomePage}/> },
        { path: "/store", element: <Store cartShow={cartShow} hideCart={hideCart} showCart={showCart} 
               albumDetails={albumDetails} setStorePage={setStorePage}/> },
-       { path: "/about", element: <About aboutPage={aboutPage} setAboutPage={setAboutPage}/> }
+       { path: "/about", element: <About aboutPage={aboutPage} setAboutPage={setAboutPage}/> },
+       { path: "/contactUs", element: <ContactUs setContactUsPage={setContactUsPage}/> }
      ]},
     
   ]);
