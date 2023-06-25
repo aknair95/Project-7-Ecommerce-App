@@ -21,6 +21,10 @@ const NavigationBar=(props) =>{
                         <Nav.Link href="/about" style={{fontFamily:"times-new-roman",fontWeight:"bold",fontSize:"20px",color:"blue"}} 
                         active={props.aboutPage}>ABOUT</Nav.Link>
                     </Nav.Item>
+                    <Nav.Item>
+                        <Nav.Link href="/contactUs" style={{fontFamily:"times-new-roman",fontWeight:"bold",fontSize:"20px",color:"blue"}} 
+                        active={props.contactUsPage}>CONTACT_US</Nav.Link>
+                    </Nav.Item>
                 </Nav>
                 <Nav style={{marginLeft:"560px"}}>
                     {props.storePage && <CartBtn setCartShow={props.setCartShow}/>}
