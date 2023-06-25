@@ -8,7 +8,7 @@ const NavigationBar=(props) =>{
     return(
         <CartContextProvider albumDetails={props.albumDetails}>
             <Navbar bg="dark" expand="sm" variant="light" fixed="top">
-                <Nav variant="tabs" style={{marginLeft:"750px"}}>
+                <Nav variant="tabs" style={{marginLeft:"660px"}}>
                     <Nav.Item>
                         <Nav.Link href="/" style={{fontFamily:"times-new-roman",fontWeight:"bold",fontSize:"20px",color:"blue"}} 
                         active={props.homePage}>HOME</Nav.Link>
