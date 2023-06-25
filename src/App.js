@@ -3,9 +3,10 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Home from "./pages/home";
 import Store from "./pages/store";
 import About from "./pages/about";
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import RootPage from "./pages/root";
 import ContactUs from "./pages/contactUs";
+import axios from "axios";
 
 
 const App = () => {
@@ -51,6 +52,23 @@ const App = () => {
   const [aboutPage,setAboutPage]=useState(false);
   const [contactUsPage,setContactUsPage]=useState(false);
 
+  const addUserInfoHandler= async (name,email,mobNo) =>{
+   try{ 
+      await axios.post("https://ecommerce-generics-default-rtdb.firebaseio.com/usersInfo.json",{
+          name: name,
+          email: email,
+          mobNo: mobNo
+        }); 
+    } catch(error){
+      console.log(error);
+    }
+  }
+
+  // useEffect hook for post request to firebase
+  useEffect(() =>{
+    addUserInfoHandler()
+  },[addUserInfoHandler])
+
   const router=createBrowserRouter([
     { path: "/",
       element: <RootPage showCart={showCart} hideCart={hideCart} storePage={storePage} homePage={homePage} 
@@ -60,7 +78,7 @@ const App = () => {
        { path: "/store", element: <Store cartShow={cartShow} hideCart={hideCart} showCart={showCart} 
               albumDetails={albumDetails} setStorePage={setStorePage}/> },
        { path: "/about", element: <About aboutPage={aboutPage} setAboutPage={setAboutPage}/> },
-       { path: "/contactUs", element: <ContactUs setContactUsPage={setContactUsPage}/> }
+       { path: "/contactUs", element: <ContactUs setContactUsPage={setContactUsPage} addUserInfo={addUserInfoHandler}/> }
      ]},
     
   ]);
