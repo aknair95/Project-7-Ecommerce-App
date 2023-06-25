@@ -2,11 +2,10 @@
 import { Navbar,Nav } from "react-bootstrap";
 import CartCounter from "./cart/cartCounter";
 import CartBtn from "./cart/cartBtn";
-import CartContextProvider from "../store/cartContextProvider";
 
 const NavigationBar=(props) =>{
     return(
-        <CartContextProvider albumDetails={props.albumDetails}>
+        <>
             <Navbar bg="dark" expand="sm" variant="light" fixed="top">
                 <Nav variant="tabs" style={{marginLeft:"660px"}}>
                     <Nav.Item>
@@ -26,12 +25,12 @@ const NavigationBar=(props) =>{
                         active={props.contactUsPage}>CONTACT_US</Nav.Link>
                     </Nav.Item>
                 </Nav>
-                <Nav style={{marginLeft:"560px"}}>
+                <Nav style={{marginLeft:"480px"}}>
                     {props.storePage && <CartBtn setCartShow={props.setCartShow}/>}
                     {props.storePage && <CartCounter/>}    
                 </Nav>       
             </Navbar>
-        </CartContextProvider>
+        </>
     )
 }
 

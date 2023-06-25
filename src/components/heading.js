@@ -4,7 +4,7 @@ import { Container, Navbar } from "react-bootstrap";
 const HeadingBar=(props) =>{
     return(
         <Fragment>
-            <Navbar expand="sm" variant="dark" style={{height:"250px",backgroundColor:"#777777ff"}}>
+            <Navbar expand="sm" variant="dark" style={{height:"250px",backgroundColor:"#777777"}}>
                 <Container>
                     <Navbar.Brand style={{fontSize:"140px",marginLeft:"280px",marginBottom:"80px",fontFamily:"times-new-roman"}}>
                     The Generics<hr/>

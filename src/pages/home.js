@@ -40,7 +40,7 @@ const Home=(props) =>{
     return (
         <>
             <hr className="p-4"/>
-            <Navbar variant="dark" style={{height:"500px",backgroundColor:"#777777ff"}}>
+            <Navbar variant="dark" style={{height:"500px",backgroundColor:"#777777"}}>
                 <Container style={{justifyContent:"center"}}>
                     <Navbar.Brand>
                         <Stack gap={1}>
