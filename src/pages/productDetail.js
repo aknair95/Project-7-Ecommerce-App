@@ -34,7 +34,7 @@ const ProductDetails=(props) =>{
                     </Navbar.Brand>
                 </Nav><br/><hr/>
                 <Container className={classes.container}>
-                    <Carousel className={classes.carousel}>
+                    <Carousel className={classes.carousel} fade>
                         <Carousel.Item>
                             <img src={props.albumDetails[index].img1Src} alt="color1" className={classes.image}/>
                             <Carousel.Caption>
