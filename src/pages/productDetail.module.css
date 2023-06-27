@@ -39,11 +39,14 @@
     height: 100px;
 }
 
-.rateBtn {
+.Btn {
     display: flex;
     flex: auto;
     justify-content: center;
     justify-items: center;
-    align-items: center;
-    
+}
+
+.cartBtn {
+   width: 170px;
+   height: 70px; 
 }

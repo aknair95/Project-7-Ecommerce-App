@@ -1,6 +1,8 @@
 import { Button, Card, Carousel, Container, Nav, Navbar } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import classes from "./productDetail.module.css";
+import CartContext from "../store/cartContext";
+import { useContext } from "react";
 
 const ProductDetails=(props) =>{
     const param=useParams();
@@ -12,6 +14,14 @@ const ProductDetails=(props) =>{
          } 
          count++;
         });
+
+        const cartCtx=useContext(CartContext);
+
+        const onClickAddtoCart=(e) =>{
+            const item={title: e.target.value};
+            cartCtx.addItem(item,1);
+        }
+        
     return(
         <>
             <br/><br/><br/>
@@ -44,13 +54,18 @@ const ProductDetails=(props) =>{
                     </Carousel>
                 </Container>
             </Card><br/><hr/>
+            <div className={classes.Btn}>
+                <Button value={props.albumDetails[index].title} onClick={onClickAddtoCart} className={classes.cartBtn}>
+                    ADD TO CART
+                </Button>
+            </div><br/>
             <Nav className={classes.reviews}>
                 <Navbar.Brand>
                     <div>REVIEWS</div>
                 </Navbar.Brand>
             </Nav><br/>
-            <div className={classes.rateBtn}>
-                <Button>RATE PRODUCT</Button>   
+            <div className={classes.Btn}>
+                <Button className={classes.rateBtn}>RATE PRODUCT</Button>   
             </div><br/>
         </>
     )
