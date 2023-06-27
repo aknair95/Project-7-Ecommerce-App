@@ -53,7 +53,7 @@ const Home=(props) =>{
             </Navbar>
             <Navbar>
                 <Container>
-                    <Navbar.Brand style={{fontSize:"35px",marginLeft:"580px",fontFamily:"cursive",fontWeight:"bolder"}}>
+                    <Navbar.Brand style={{fontSize:"35px",marginLeft:"610px",fontFamily:"cursive",fontWeight:"bolder"}}>
                         TOURS<hr/>
                     </Navbar.Brand>
                 </Container>
@@ -62,7 +62,7 @@ const Home=(props) =>{
                 <ListGroup as="ul" style={{fontFamily: "times-new-roman"}}>
                     { 
                         tours.map((item) =>{
-                            return (<>
+                            return (<Card>
                                     <ListGroup.Item as="li">
                                         <Container style={{marginLeft:"280px"}}>
                                             <Row className="justify-content-md-center">
@@ -81,9 +81,9 @@ const Home=(props) =>{
                                             </Row>
                                         </Container>  
                                     </ListGroup.Item>
-                                    </>)
+                                    </Card>)
                                 })
-                    }
+                    }<br/><br/>
                 </ListGroup>
             </Card>
         </>
