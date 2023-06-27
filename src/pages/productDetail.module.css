@@ -1,0 +1,49 @@
+.carousel {
+    height: 50%;
+    width: 50%;
+    margin-left: 25%;
+
+}
+
+.container {
+    background-color: #7f7f7f;
+}
+
+.albumHeading {
+    font-size: 40px;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    display: flex;
+    flex: auto;
+    justify-content: center;
+    align-items: center;
+    background-color: cadetblue;
+    height: 150px;
+}
+
+.image {
+    width: 100%;
+    border-radius: 12px;
+}
+
+.reviews {
+    font-size: 30px;
+    text-decoration: underline;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    display: flex;
+    flex: auto;
+    justify-content: center;
+    align-items: center;
+    background-color: lightgreen;
+    height: 100px;
+}
+
+.rateBtn {
+    display: flex;
+    flex: auto;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    
+}
