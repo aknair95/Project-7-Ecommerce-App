@@ -5,6 +5,8 @@ import CartContext from "../store/cartContext";
 import { useContext } from "react";
 
 const ProductDetails=(props) =>{
+    props.setStorePage(true);
+
     const param=useParams();
     let index=-1;
     let count=0;
@@ -34,19 +36,19 @@ const ProductDetails=(props) =>{
                 <Container className={classes.container}>
                     <Carousel className={classes.carousel}>
                         <Carousel.Item>
-                            <img src="/images/album1/colors1.jpg" alt="color1" className={classes.image}/>
+                            <img src={props.albumDetails[index].img1Src} alt="color1" className={classes.image}/>
                             <Carousel.Caption>
                                 <h2>{`${props.albumDetails[index].title} ONE`}</h2>
                             </Carousel.Caption>
                         </Carousel.Item>
                         <Carousel.Item>
-                            <img src="/images/album1/colors2.jpg" alt="color2" className={classes.image}/>
+                            <img src={props.albumDetails[index].img2Src} className={classes.image}/>
                             <Carousel.Caption>
                                 <h2>{`${props.albumDetails[index].title} TWO`}</h2>
                             </Carousel.Caption>
                         </Carousel.Item>
                         <Carousel.Item>
-                            <img src="/images/album1/colors3.jpg" alt="color3" className={classes.image}/>
+                            <img src={props.albumDetails[index].img3Src} className={classes.image}/>
                             <Carousel.Caption>
                                 <h2>{`${props.albumDetails[index].title} THREE`}</h2>
                             </Carousel.Caption>
