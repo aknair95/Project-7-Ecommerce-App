@@ -1,6 +1,7 @@
 import { Fragment,useContext} from "react";
 import { Button, Card, Col, Container, Row } from "react-bootstrap";
 import CartContext from "../store/cartContext";
+import { Link } from "react-router-dom";
 
 const Album=(props) =>{
     const cartCtx=useContext(CartContext);
@@ -19,9 +20,11 @@ const Album=(props) =>{
                             <Card.Header className="text-center" style={{fontWeight:"bold",fontFamily:"times-new-roman",fontSize:"26px"}}>
                                 {props.albumDetails1.title}
                             </Card.Header>
-                            <Card.Body style={{marginLeft:"38px"}}>
-                                <img style={{borderRadius:"10px"}} src={props.albumDetails1.imageUrl}/>
-                            </Card.Body>
+                            <Link to={`/store/${props.albumDetails1.id}`}>
+                                <Card.Body style={{marginLeft:"38px"}}>
+                                    <img style={{borderRadius:"10px"}} src={props.albumDetails1.imageUrl}/>
+                                </Card.Body>
+                            </Link>    
                             <Card.Footer className="text-center">
                                 <h5 style={{fontWeight:"bold"}}>{`Rs ${props.albumDetails1.price}`}</h5>
                             </Card.Footer>
@@ -35,9 +38,11 @@ const Album=(props) =>{
                             <Card.Header className="text-center" style={{fontWeight:"bold",fontFamily:"times-new-roman",fontSize:"26px"}}>
                                 {props.albumDetails2.title}
                             </Card.Header>
-                            <Card.Body style={{marginLeft:"38px"}}>
-                                <img style={{borderRadius:"10px"}} src={props.albumDetails2.imageUrl}/>
-                            </Card.Body>
+                            <Link to={`/store/${props.albumDetails2.id}`}>
+                                <Card.Body style={{marginLeft:"38px"}}>
+                                    <img style={{borderRadius:"10px"}} src={props.albumDetails2.imageUrl}/>
+                                </Card.Body>
+                            </Link>   
                             <Card.Footer className="text-center">
                                 <h5 style={{fontWeight:"bold"}}>{`Rs ${props.albumDetails2.price}`}</h5>
                             </Card.Footer>
