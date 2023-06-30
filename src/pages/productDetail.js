@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import classes from "./productDetail.module.css";
 import CartContext from "../store/cartContext";
 import { useContext } from "react";
+import Cart from "../components/cart/cart";
 
 const ProductDetails=(props) =>{
     props.setStorePage(true);
@@ -26,6 +27,7 @@ const ProductDetails=(props) =>{
         
     return(
         <>
+            <Cart cartShow={props.cartShow} cartHide={props.hideCart}/>
             <br/><br/><br/>
             <Card>
                 <Nav className={classes.albumHeading}>

@@ -97,7 +97,7 @@ const App = () => {
               albumDetails={albumDetails} setStorePage={setStorePage} setHomePage={setHomePage} setAboutPage={setAboutPage} setContactUsPage={setContactUsPage}/> },
        { path: "/about", element: <About aboutPage={aboutPage} setAboutPage={setAboutPage}/> },
        { path: "/contactUs", element: <ContactUs setContactUsPage={setContactUsPage} addUserInfo={addUserInfoHandler}/> },
-       { path: "/store/:Id", element: <ProductDetails albumDetails={albumDetails} setStorePage={setStorePage}/> }
+       { path: "/store/:Id", element: <ProductDetails albumDetails={albumDetails} setStorePage={setStorePage} cartShow={cartShow} hideCart={hideCart}/> }
      ]},
     
   ]);
