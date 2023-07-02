@@ -2,13 +2,12 @@ import Footer from "../components/footer";
 import HeadingBar from "../components/heading";
 import bandImage from "../images/bandMembers.png";
 
-const About = (props) => {
-  props.setAboutPage(true);
-
+const About = () => {
+  
   return (
     <>
       <hr className="p-4"/>
-      <HeadingBar aboutPage={props.aboutPage}/>
+      <HeadingBar/>
         <p style={{display:"flex"}}>
             <img style={{height:"300px",width:"300px",borderRadius:"140px",padding:"5px"}} src={bandImage} alt="band members"/>
             <br/><br/>

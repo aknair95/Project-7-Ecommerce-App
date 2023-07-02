@@ -6,8 +6,7 @@ import { useContext } from "react";
 import Cart from "../components/cart/cart";
 
 const ProductDetails=(props) =>{
-    props.setStorePage(true);
-
+   
     const param=useParams();
     let index=-1;
     let count=0;

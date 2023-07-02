@@ -2,8 +2,7 @@
 import { Button, Card, Col, Container, ListGroup, Navbar, Row, Stack} from "react-bootstrap";
 
 const Home=(props) =>{
-    props.setHomePage(true);
-
+   
     const tours=[
         {
             date: "JUL16",

@@ -7,8 +7,7 @@ import CartContextProvider from "../store/cartContextProvider";
 import Footer from "../components/footer";
 
 const Store=(props) =>{
-    props.setStorePage(true);
-
+    
     return(
     <CartContextProvider albumDetails={props.albumDetails}>
       <Cart cartShow={props.cartShow} cartHide={props.hideCart}/>

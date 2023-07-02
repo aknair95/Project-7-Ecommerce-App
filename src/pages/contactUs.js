@@ -4,8 +4,6 @@ import classes from "./contactUS.module.css";
 import { useRef } from "react";
 
 const ContactUs=(props) =>{
-    props.setContactUsPage(true);
-
     const nameRef=useRef();
     const emailRef=useRef();
     const mobNoRef=useRef();
@@ -15,7 +13,9 @@ const ContactUs=(props) =>{
         const enteredName=nameRef.current.value;
         const enteredEmail=emailRef.current.value;
         const enteredMobNo=mobNoRef.current.value;
+
         props.addUserInfo(enteredName,enteredEmail,enteredMobNo); 
+        
         nameRef.current.value="";   
         emailRef.current.value="";
         mobNoRef.current.value="";

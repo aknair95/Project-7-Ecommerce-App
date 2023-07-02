@@ -65,11 +65,6 @@ const App = () => {
     setCartShow(false);
   }
 
-  const [homePage,setHomePage]=useState(false);
-  const [storePage,setStorePage]=useState(false);
-  const [aboutPage,setAboutPage]=useState(false);
-  const [contactUsPage,setContactUsPage]=useState(false);
-
   const addUserInfoHandler= async (name,email,mobNo) =>{
    try{ 
       await axios.post("https://ecommerce-generics-default-rtdb.firebaseio.com/usersInfo.json",{
@@ -89,15 +84,13 @@ const App = () => {
 
   const router=createBrowserRouter([
     { path: "/",
-      element: <RootPage showCart={showCart} hideCart={hideCart} storePage={storePage} homePage={homePage} 
-              aboutPage={aboutPage} contactUsPage={contactUsPage}/>,
+      element: <RootPage showCart={showCart} hideCart={hideCart}/>,
       children: [
-       { path: "/", element: <Home setHomePage={setHomePage}/> },
-       { path: "/store", element: <Store cartShow={cartShow} hideCart={hideCart} showCart={showCart} 
-              albumDetails={albumDetails} setStorePage={setStorePage} setHomePage={setHomePage} setAboutPage={setAboutPage} setContactUsPage={setContactUsPage}/> },
-       { path: "/about", element: <About aboutPage={aboutPage} setAboutPage={setAboutPage}/> },
-       { path: "/contactUs", element: <ContactUs setContactUsPage={setContactUsPage} addUserInfo={addUserInfoHandler}/> },
-       { path: "/store/:Id", element: <ProductDetails albumDetails={albumDetails} setStorePage={setStorePage} cartShow={cartShow} hideCart={hideCart}/> }
+       { path: "/", element: <Home/> },
+       { path: "/store", element: <Store cartShow={cartShow} hideCart={hideCart} showCart={showCart} albumDetails={albumDetails}/> },
+       { path: "/about", element: <About/> },
+       { path: "/contactUs", element: <ContactUs addUserInfo={addUserInfoHandler}/> },
+       { path: "/store/:Id", element: <ProductDetails albumDetails={albumDetails} cartShow={cartShow} hideCart={hideCart}/> }
      ]},
     
   ]);
