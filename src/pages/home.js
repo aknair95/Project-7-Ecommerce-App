@@ -1,7 +1,7 @@
 
 import { Button, Card, Col, Container, ListGroup, Navbar, Row, Stack} from "react-bootstrap";
 
-const Home=(props) =>{
+const Home=() =>{
    
     const tours=[
         {
