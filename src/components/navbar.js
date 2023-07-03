@@ -2,13 +2,13 @@
 import { Navbar,Nav } from "react-bootstrap";
 import CartCounter from "./cart/cartCounter";
 import CartBtn from "./cart/cartBtn";
-import { useLocation } from "react-router-dom";
+import { useLocation} from "react-router-dom";
 
 const NavigationBar=(props) =>{
-    
+
     const location=useLocation();
     const activePath=location.pathname;
-    let homePage,storePage,aboutPage,contactUsPage,loginPage;
+    let homePage,storePage,aboutPage,contactUsPage,loginPage,signUpPage;
     switch (activePath) {
             case "/":
                 homePage=true;
@@ -24,7 +24,10 @@ const NavigationBar=(props) =>{
                 break;
             case "/login":
                 loginPage=true;
-                break;            
+                break;
+            case "/login/signUp":
+                signUpPage=true;
+                break;                 
     }
 
     return(
@@ -49,7 +52,7 @@ const NavigationBar=(props) =>{
                     </Nav.Item>
                     <Nav.Item>
                         <Nav.Link href="/login" style={{fontFamily:"times-new-roman",fontWeight:"bold",fontSize:"20px",color:"red"}} 
-                        active={loginPage}>LOGIN</Nav.Link>
+                        active={loginPage || signUpPage}>{loginPage ? "LOGIN" : "SIGN UP"}</Nav.Link>
                     </Nav.Item>
                 </Nav>
                 <Nav style={{marginLeft:"400px"}}>

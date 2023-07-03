@@ -9,6 +9,8 @@ import ContactUs from "./pages/contactUs";
 import axios from "axios";
 import CartContextProvider from "./store/cartContextProvider";
 import ProductDetails from "./pages/productDetail";
+import Login from "./pages/login";
+import SignUp from "./pages/signUp";
 
 
 const App = () => {
@@ -90,7 +92,9 @@ const App = () => {
        { path: "/store", element: <Store cartShow={cartShow} hideCart={hideCart} showCart={showCart} albumDetails={albumDetails}/> },
        { path: "/about", element: <About/> },
        { path: "/contactUs", element: <ContactUs addUserInfo={addUserInfoHandler}/> },
-       { path: "/store/:Id", element: <ProductDetails albumDetails={albumDetails} cartShow={cartShow} hideCart={hideCart}/> }
+       { path: "/store/:Id", element: <ProductDetails albumDetails={albumDetails} cartShow={cartShow} hideCart={hideCart}/> },
+       { path: "/login", element: <Login/>},
+       { path: "/login/:signUp", element: <SignUp/>}
      ]},
     
   ]);
