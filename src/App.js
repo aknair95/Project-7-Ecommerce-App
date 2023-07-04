@@ -10,6 +10,7 @@ import CartContextProvider from "./store/cartContextProvider";
 import ProductDetails from "./pages/productDetail";
 import Login from "./pages/login";
 import SignUp from "./pages/signUp";
+import AuthContextProvider from "./store/authContextProvider";
 
 
 const App = () => {
@@ -66,8 +67,6 @@ const App = () => {
     setCartShow(false);
   }
 
- 
-
   const router=createBrowserRouter([
     { path: "/",
       element: <RootPage showCart={showCart} hideCart={hideCart}/>,
@@ -85,9 +84,11 @@ const App = () => {
 
   return (
   <>
-    <CartContextProvider albumDetails={albumDetails}>
-      <RouterProvider router={router}/>
-    </CartContextProvider>
+    <AuthContextProvider>
+      <CartContextProvider albumDetails={albumDetails}>
+        <RouterProvider router={router}/>
+      </CartContextProvider>
+    </AuthContextProvider>
   </> 
   );
 };
