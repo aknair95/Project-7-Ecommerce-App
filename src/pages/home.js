@@ -64,7 +64,7 @@ const Home=() =>{
                             return (<Card>
                                     <ListGroup.Item as="li">
                                         <Container style={{marginLeft:"280px"}}>
-                                            <Row className="justify-content-md-center">
+                                            <Row className="justify-content-md-center" key={Math.random()}>
                                                 <Col>
                                                     <h4 style={{fontWeight:"bold"}}>{item.date}</h4>
                                                 </Col>
