@@ -1,21 +1,40 @@
 
-import { Navbar,Nav } from "react-bootstrap";
+import { Navbar,Nav,Button} from "react-bootstrap";
 import CartCounter from "./cart/cartCounter";
 import CartBtn from "./cart/cartBtn";
-import { useLocation} from "react-router-dom";
+import { useLocation, useNavigate} from "react-router-dom";
+import { useContext } from "react";
+import AuthContext from "../store/authContext";
 
 const NavigationBar=(props) =>{
 
+    const productsId=["/store/a1","/store/a2","/store/a3","/store/a4"];
+
     const location=useLocation();
     const activePath=location.pathname;
-    let homePage,storePage,aboutPage,contactUsPage,loginPage,signUpPage;
+    const navigate=useNavigate();
+    const authCtx=useContext(AuthContext);
+    
+    const logoutHandler=() =>{
+        authCtx.logout();
+        localStorage.removeItem("token");
+        navigate("/login");
+    }
+
+    let homePage,storePage,aboutPage,contactUsPage,loginPage,signUpPage,storeProductPage;
+    productsId.find((item) =>{
+        if(activePath===item){
+            storeProductPage=true;
+        }
+    })
+   
     switch (activePath) {
             case "/":
                 homePage=true;
                 break;
             case "/store":
                 storePage=true;
-                break;
+                break; 
             case "/about":
                 aboutPage=true;
                 break;
@@ -40,7 +59,7 @@ const NavigationBar=(props) =>{
                     </Nav.Item>
                     <Nav.Item>
                         <Nav.Link href="/store" style={{fontFamily:"times-new-roman",fontWeight:"bold",fontSize:"20px",color:"blue"}} 
-                        active={storePage}>STORE</Nav.Link>
+                        active={storePage || storeProductPage}>STORE</Nav.Link>
                     </Nav.Item>
                     <Nav.Item>
                         <Nav.Link href="/about" style={{fontFamily:"times-new-roman",fontWeight:"bold",fontSize:"20px",color:"blue"}} 
@@ -50,14 +69,18 @@ const NavigationBar=(props) =>{
                         <Nav.Link href="/contactUs" style={{fontFamily:"times-new-roman",fontWeight:"bold",fontSize:"20px",color:"blue"}} 
                         active={contactUsPage}>CONTACT_US</Nav.Link>
                     </Nav.Item>
-                    <Nav.Item>
+                    { !authCtx.isLoggedIn && <Nav.Item>
                         <Nav.Link href="/login" style={{fontFamily:"times-new-roman",fontWeight:"bold",fontSize:"20px",color:"red"}} 
-                        active={loginPage || signUpPage}>{loginPage ? "LOGIN" : "SIGN UP"}</Nav.Link>
-                    </Nav.Item>
+                        active={loginPage || signUpPage}>{signUpPage ? "SIGN UP" : "LOGIN"}</Nav.Link>
+                    </Nav.Item>}
+                    { authCtx.isLoggedIn && <Nav.Item>
+                        <Button variant="outline-danger" onClick={logoutHandler} style={{fontFamily:"times-new-roman",fontWeight:"bold",fontSize:"20px",color:"red"}}>
+                        LOGOUT</Button>
+                    </Nav.Item>}
                 </Nav>
-                <Nav style={{marginLeft:"400px"}}>
-                    {storePage && <CartBtn setCartShow={props.setCartShow}/>}
-                    {storePage && <CartCounter/>}    
+                <Nav style={{marginLeft:"300px"}}>
+                    {(storePage || storeProductPage) && <CartBtn setCartShow={props.setCartShow}/>}
+                    {(storePage || storeProductPage) && <CartCounter/>}    
                 </Nav>       
             </Navbar>
         </>
