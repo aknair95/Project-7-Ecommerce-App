@@ -6,11 +6,12 @@ import Cart from "../components/cart/cart";
 import Footer from "../components/footer";
 import AuthContext from "../store/authContext";
 import { useContext } from "react";
+import { Navigate } from "react-router-dom";
 
 const Store=(props) =>{
   const authCtx=useContext(AuthContext);
 
-   return(
+  return(
     <>
       <Cart cartShow={props.cartShow} cartHide={props.hideCart}/>
       <hr className="p-4"/>
@@ -22,6 +23,7 @@ const Store=(props) =>{
         VIEW CART
       </Button><br/><br/>
       <Footer/>
+      {!authCtx.isLoggedIn && <Navigate to={"/login"}/>}
     </>
     )
 }
