@@ -3,13 +3,15 @@ import HeadingBar from "../components/heading";
 import Album from "../components/albumTile";
 import { Button } from "react-bootstrap";
 import Cart from "../components/cart/cart";
-import CartContextProvider from "../store/cartContextProvider";
 import Footer from "../components/footer";
+import AuthContext from "../store/authContext";
+import { useContext } from "react";
 
 const Store=(props) =>{
-    
-    return(
-    <CartContextProvider albumDetails={props.albumDetails}>
+  const authCtx=useContext(AuthContext);
+
+   return(
+    <>
       <Cart cartShow={props.cartShow} cartHide={props.hideCart}/>
       <hr className="p-4"/>
       <HeadingBar/>
@@ -20,7 +22,7 @@ const Store=(props) =>{
         VIEW CART
       </Button><br/><br/>
       <Footer/>
-    </CartContextProvider>
+    </>
     )
 }
 
