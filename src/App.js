@@ -1,9 +1,9 @@
 
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { Navigate, RouterProvider, createBrowserRouter} from "react-router-dom";
 import Home from "./pages/home";
 import Store from "./pages/store";
 import About from "./pages/about";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import RootPage from "./pages/root";
 import ContactUs from "./pages/contactUs";
 import CartContextProvider from "./store/cartContextProvider";
@@ -11,7 +11,6 @@ import ProductDetails from "./pages/productDetail";
 import Login from "./pages/login";
 import SignUp from "./pages/signUp";
 import AuthContextProvider from "./store/authContextProvider";
-
 
 const App = () => {
   const albumDetails=[
@@ -76,10 +75,9 @@ const App = () => {
        { path: "/about", element: <About/> },
        { path: "/contactUs", element: <ContactUs/> },
        { path: "/store/:Id", element: <ProductDetails albumDetails={albumDetails} cartShow={cartShow} hideCart={hideCart}/> },
-       { path: "/login", element: <Login/>},
-       { path: "/login/:signUp", element: <SignUp/>}
+       { path: "/login", element: <Login/> },
+       { path: "/login/:signUp", element: <SignUp/> },
      ]},
-    
   ]);
 
   return (

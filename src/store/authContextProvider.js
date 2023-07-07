@@ -5,7 +5,7 @@ const AuthContextProvider=(props) =>{
     const initialToken=localStorage.getItem("token");
     const [token,setToken]= useState(initialToken);
 
-    const userLoginStatus= token!=null;
+    const userLoginStatus= !!token;
     
     const loginHandler=(loginToken) =>{
         setToken(loginToken);

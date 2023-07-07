@@ -1,13 +1,15 @@
 import classes from "./login.module.css";
 import { Button,Container,Form,Navbar } from "react-bootstrap";
-import { useCallback, useEffect, useRef } from "react";
+import { useContext, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import AuthContext from "../store/authContext";
 
 const Login=() =>{
     const emailRef=useRef();
     const passwordRef=useRef();
     const navigate=useNavigate();
+    const authCtx=useContext(AuthContext);
 
     const loginHandler= async (e) =>{
         e.preventDefault();
@@ -15,11 +17,13 @@ const Login=() =>{
         const enteredPassword=passwordRef.current.value; 
 
         try{ 
-            await axios.post("https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAp5p5uu04Cw4kQK-AghTVrCMiAd4RXJL0",{
+            const response= await axios.post("https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyAp5p5uu04Cw4kQK-AghTVrCMiAd4RXJL0",{
                 email: enteredEmail,
                 password: enteredPassword,
                 returnSecureToken: true
              });
+             authCtx.login(response.data.idToken);
+             localStorage.setItem("token",response.data.idToken);
              navigate("/store");
             } catch(error){
                 alert("!!! Incorrect Email or Password !!!");
