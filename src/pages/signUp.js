@@ -1,7 +1,7 @@
 import classes from "./signUp.module.css";
 import { Button,Container,Form,Navbar } from "react-bootstrap";
 import { useRef } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const SignUp=() =>{
@@ -51,7 +51,7 @@ const SignUp=() =>{
                     <Form.Control type="email" placeholder="Enter Email ID" required size="lg" ref={emailRef}/>
                 </Form.Group>
                 <Form.Group className="p-3">                      
-                    <Form.Control type="password" placeholder="Enter Password" required size="lg" ref={passwordRef} />
+                    <Form.Control type="password" placeholder="Enter Password" minLength={6} required size="lg" ref={passwordRef} />
                 </Form.Group>
                 <div className={classes.signUpBtn}>
                     <Button type="submit" size="lg">SIGN UP</Button>
