@@ -1,16 +1,37 @@
 import classes from "./login.module.css";
 import { Button,Container,Form,Navbar } from "react-bootstrap";
-import { useContext, useRef } from "react";
+import { useContext, useRef,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import AuthContext from "../store/authContext";
+import CartContext from "../store/cartContext";
 
 const Login=() =>{
     const emailRef=useRef();
     const passwordRef=useRef();
     const navigate=useNavigate();
     const authCtx=useContext(AuthContext);
+    const cartCtx=useContext(CartContext);
 
+    const getUserCartItems= async () =>{
+        try{
+            const emailId=localStorage.getItem("emailId");
+            const emailId1=emailId.replace('@',"");
+            const updatedEmailId=emailId1.replace('.',"");
+            const response=await axios.get(`https://ecommerce-generics-default-rtdb.firebaseio.com/cart${updatedEmailId}.json`);
+            response.data.updatedCartItems.forEach((element) =>{
+                cartCtx.addItem(element,element.qty);
+            });
+        } catch(error){
+            console.log(error);
+        }    
+    }
+
+    useEffect(() =>{
+        getUserCartItems();
+       },[getUserCartItems])
+
+   
     const loginHandler= async (e) =>{
         e.preventDefault();
         const enteredEmail=emailRef.current.value;
@@ -24,11 +45,13 @@ const Login=() =>{
              });
              authCtx.login(response.data.idToken);
              localStorage.setItem("token",response.data.idToken);
+             localStorage.setItem("emailId",enteredEmail);
              navigate("/store");
             } catch(error){
                 alert("!!! Incorrect Email or Password !!!");
             }
         
+        getUserCartItems();
         emailRef.current.value="";
         passwordRef.current.value="";
     }
