@@ -5,6 +5,7 @@ import CartBtn from "./cart/cartBtn";
 import { useLocation, useNavigate} from "react-router-dom";
 import { useContext } from "react";
 import AuthContext from "../store/authContext";
+import CartContext from "../store/cartContext";
 
 const NavigationBar=(props) =>{
 
@@ -14,10 +15,15 @@ const NavigationBar=(props) =>{
     const activePath=location.pathname;
     const navigate=useNavigate();
     const authCtx=useContext(AuthContext);
+    const cartCtx=useContext(CartContext);
     
     const logoutHandler=() =>{
         authCtx.logout();
         localStorage.removeItem("token");
+        localStorage.removeItem("emailId");
+        props.albumDetails.forEach(element =>{
+        cartCtx.removeItem(element);
+        });
         navigate("/login");
     }
 
