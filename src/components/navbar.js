@@ -18,12 +18,12 @@ const NavigationBar=(props) =>{
     const cartCtx=useContext(CartContext);
     
     const logoutHandler=() =>{
-        authCtx.logout();
         localStorage.removeItem("token");
-        localStorage.removeItem("emailId");
+        authCtx.logout();
         props.albumDetails.forEach(element =>{
-        cartCtx.removeItem(element);
+            cartCtx.removeItem(element);
         });
+        localStorage.removeItem("emailId");
         navigate("/login");
     }
 
