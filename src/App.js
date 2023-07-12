@@ -68,7 +68,7 @@ const App = () => {
 
   const router=createBrowserRouter([
     { path: "/",
-      element: <RootPage showCart={showCart} hideCart={hideCart}/>,
+      element: <RootPage showCart={showCart} hideCart={hideCart} albumDetails={albumDetails}/>,
       children: [
        { path: "/", element: <Home/> },
        { path: "/store", element: <Store cartShow={cartShow} hideCart={hideCart} showCart={showCart} albumDetails={albumDetails}/> },
