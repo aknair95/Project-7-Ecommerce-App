@@ -5,7 +5,7 @@ import NavigationBar from "../components/navbar";
 const RootPage=(props) =>{          
     return(
         <>
-            <NavigationBar setCartShow={props.showCart} setCartHide={props.hideCart}/>
+            <NavigationBar setCartShow={props.showCart} setCartHide={props.hideCart} albumDetails={props.albumDetails}/>
             <Outlet/>
         </>
     )
