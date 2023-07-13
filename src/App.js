@@ -1,16 +1,23 @@
 
-import { Navigate, RouterProvider, createBrowserRouter} from "react-router-dom";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Home from "./pages/home";
-import Store from "./pages/store";
-import About from "./pages/about";
-import { useContext, useState } from "react";
+// import Store from "./pages/store";
+// import About from "./pages/about";
+import { Suspense, lazy, useState } from "react";
 import RootPage from "./pages/root";
-import ContactUs from "./pages/contactUs";
+// import ContactUs from "./pages/contactUs";
 import CartContextProvider from "./store/cartContextProvider";
-import ProductDetails from "./pages/productDetail";
-import Login from "./pages/login";
-import SignUp from "./pages/signUp";
+// import ProductDetails from "./pages/productDetail";
+// import Login from "./pages/login";
+// import SignUp from "./pages/signUp";
 import AuthContextProvider from "./store/authContextProvider";
+
+const Store= lazy(() => import("./pages/store"));
+const About= lazy(() => import("./pages/about"));
+const ContactUs= lazy(() => import("./pages/contactUs"));
+const Login= lazy(() => import("./pages/login"));
+const ProductDetails= lazy(() => import("./pages/productDetail"));
+const SignUp= lazy(() => import("./pages/signUp"));
 
 const App = () => {
   const albumDetails=[
@@ -70,13 +77,25 @@ const App = () => {
     { path: "/",
       element: <RootPage showCart={showCart} hideCart={hideCart} albumDetails={albumDetails}/>,
       children: [
-       { path: "/", element: <Home/> },
-       { path: "/store", element: <Store cartShow={cartShow} hideCart={hideCart} showCart={showCart} albumDetails={albumDetails}/> },
-       { path: "/about", element: <About/> },
-       { path: "/contactUs", element: <ContactUs/> },
-       { path: "/store/:Id", element: <ProductDetails albumDetails={albumDetails} cartShow={cartShow} hideCart={hideCart}/> },
-       { path: "/login", element: <Login/> },
-       { path: "/login/:signUp", element: <SignUp/> },
+       { path: "/", element: <Home/>},
+       { path: "/store", element: <Suspense>
+                                    <Store cartShow={cartShow} hideCart={hideCart} showCart={showCart} albumDetails={albumDetails}/>
+                                  </Suspense> },
+       { path: "/about", element: <Suspense>
+                                    <About/> 
+                                  </Suspense>},
+       { path: "/contactUs", element: <Suspense>
+                                        <ContactUs/>
+                                      </Suspense> },
+       { path: "/store/:Id", element: <Suspense>
+                                        <ProductDetails albumDetails={albumDetails} cartShow={cartShow} hideCart={hideCart}/>
+                                      </Suspense> },
+       { path: "/login", element: <Suspense>
+                                    <Login/>
+                                  </Suspense> },
+       { path: "/login/:signUp", element: <Suspense>
+                                            <SignUp/>
+                                          </Suspense> },
      ]},
   ]);
 
