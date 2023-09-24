@@ -9,7 +9,7 @@ import { useContext } from "react";
 import { Navigate } from "react-router-dom";
 
 const Store=(props) =>{
-  const authCtx=useContext(AuthContext);
+const authCtx=useContext(AuthContext);
 
   return(
     <>

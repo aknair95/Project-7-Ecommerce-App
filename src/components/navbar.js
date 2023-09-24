@@ -1,11 +1,12 @@
 
-import { Navbar,Nav,Button} from "react-bootstrap";
+import { Navbar,Nav,Button, Container} from "react-bootstrap";
 import CartCounter from "./cart/cartCounter";
 import CartBtn from "./cart/cartBtn";
 import { useLocation, useNavigate} from "react-router-dom";
 import { useContext } from "react";
 import AuthContext from "../store/authContext";
 import CartContext from "../store/cartContext";
+import classes from "./navbar.module.css";
 
 const NavigationBar=(props) =>{
 
@@ -57,38 +58,44 @@ const NavigationBar=(props) =>{
 
     return(
         <>
-            <Navbar bg="dark" expand="sm" variant="light" fixed="top">
-                <Nav variant="tabs" style={{marginLeft:"660px"}}>
-                    <Nav.Item>
-                        <Nav.Link href="/" style={{fontFamily:"times-new-roman",fontWeight:"bold",fontSize:"20px",color:"blue"}} 
-                        active={homePage}>HOME</Nav.Link>
-                    </Nav.Item>
-                    <Nav.Item>
-                        <Nav.Link href="/store" style={{fontFamily:"times-new-roman",fontWeight:"bold",fontSize:"20px",color:"blue"}} 
-                        active={storePage || storeProductPage}>STORE</Nav.Link>
-                    </Nav.Item>
-                    <Nav.Item>
-                        <Nav.Link href="/about" style={{fontFamily:"times-new-roman",fontWeight:"bold",fontSize:"20px",color:"blue"}} 
-                        active={aboutPage}>ABOUT</Nav.Link>
-                    </Nav.Item>
-                    <Nav.Item>
-                        <Nav.Link href="/contactUs" style={{fontFamily:"times-new-roman",fontWeight:"bold",fontSize:"20px",color:"blue"}} 
-                        active={contactUsPage}>CONTACT_US</Nav.Link>
-                    </Nav.Item>
-                    { !authCtx.isLoggedIn && <Nav.Item>
-                        <Nav.Link href="/login" style={{fontFamily:"times-new-roman",fontWeight:"bold",fontSize:"20px",color:"red"}} 
-                        active={loginPage || signUpPage}>{signUpPage ? "SIGN UP" : "LOGIN"}</Nav.Link>
-                    </Nav.Item>}
-                    { authCtx.isLoggedIn && <Nav.Item>
-                        <Button variant="outline-danger" onClick={logoutHandler} style={{fontFamily:"times-new-roman",fontWeight:"bold",fontSize:"20px",color:"red"}}>
-                        LOGOUT</Button>
-                    </Nav.Item>}
+                <Container className={classes.navbar}>
+                    <Nav variant="tabs">
+                        <Nav.Link 
+                        href="/" 
+                        style={{fontFamily:"times-new-roman",fontWeight:"bold",fontSize:"20px",color:"blue"}} 
+                        active={homePage}>HOME
+                        </Nav.Link>
+                        <Nav.Link 
+                        href="/store" 
+                        style={{fontFamily:"times-new-roman",fontWeight:"bold",fontSize:"20px",color:"blue"}} 
+                        active={storePage || storeProductPage}>STORE
+                        </Nav.Link>
+                        <Nav.Link 
+                        href="/about" 
+                        style={{fontFamily:"times-new-roman",fontWeight:"bold",fontSize:"20px",color:"blue"}} 
+                        active={aboutPage}>ABOUT
+                        </Nav.Link>
+                        <Nav.Link 
+                        href="/contactUs" 
+                        style={{fontFamily:"times-new-roman",fontWeight:"bold",fontSize:"20px",color:"blue"}} 
+                        active={contactUsPage}>CONTACT_US
+                        </Nav.Link>
+                    { !authCtx.isLoggedIn && 
+                        <Nav.Link 
+                        href="/login" 
+                        style={{fontFamily:"times-new-roman",fontWeight:"bold",fontSize:"20px",color:"red"}} 
+                        active={loginPage || signUpPage}>{signUpPage ? "SIGN UP" : "LOGIN"}
+                        </Nav.Link> }
+                    { authCtx.isLoggedIn && 
+                        <Button 
+                        variant="outline-danger" 
+                        onClick={logoutHandler} 
+                        style={{fontFamily:"times-new-roman",fontWeight:"bold",fontSize:"20px",color:"red"}}>
+                        LOGOUT</Button> }              
                 </Nav>
-                <Nav style={{marginLeft:"300px"}}>
-                    {(storePage || storeProductPage) && <CartBtn setCartShow={props.setCartShow}/>}
-                    {(storePage || storeProductPage) && <CartCounter/>}    
-                </Nav>       
-            </Navbar>
+                {(storePage || storeProductPage) && <CartBtn setCartShow={props.setCartShow}/>}
+                {(storePage || storeProductPage) && <CartCounter/>}  
+            </Container>          
         </>
     )
 }
